@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		06D92E1D1D1F3AE200C251C8 /* TimeHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D92E1C1D1F3AE200C251C8 /* TimeHelpers.swift */; };
-		06D92E1F1D1F404500C251C8 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D92E1E1D1F404500C251C8 /* MainMenuController.swift */; };
 		06D92E221D1F40B400C251C8 /* JoinGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D92E211D1F40B400C251C8 /* JoinGameController.swift */; };
 		06D92E241D1F40F400C251C8 /* NewGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D92E231D1F40F400C251C8 /* NewGameController.swift */; };
 		6299915A0C082A1921DE2DED /* Pods_tab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF9E02FC099A47EAC882DD3 /* Pods_tab.framework */; };
@@ -23,7 +22,6 @@
 
 /* Begin PBXFileReference section */
 		06D92E1C1D1F3AE200C251C8 /* TimeHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHelpers.swift; sourceTree = "<group>"; };
-		06D92E1E1D1F404500C251C8 /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuController.swift; path = ../MainMenuController.swift; sourceTree = "<group>"; };
 		06D92E211D1F40B400C251C8 /* JoinGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGameController.swift; sourceTree = "<group>"; };
 		06D92E231D1F40F400C251C8 /* NewGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameController.swift; sourceTree = "<group>"; };
 		2CF9E02FC099A47EAC882DD3 /* Pods_tab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +53,6 @@
 		06D92E201D1F408300C251C8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				06D92E1E1D1F404500C251C8 /* MainMenuController.swift */,
 				637FC93F1D1F29BA00288B81 /* ButtonController.swift */,
 				06D92E211D1F40B400C251C8 /* JoinGameController.swift */,
 				06D92E231D1F40F400C251C8 /* NewGameController.swift */,
@@ -241,7 +238,6 @@
 				06D92E241D1F40F400C251C8 /* NewGameController.swift in Sources */,
 				06D92E1D1D1F3AE200C251C8 /* TimeHelpers.swift in Sources */,
 				06D92E221D1F40B400C251C8 /* JoinGameController.swift in Sources */,
-				06D92E1F1D1F404500C251C8 /* MainMenuController.swift in Sources */,
 				637FC9401D1F29BA00288B81 /* ButtonController.swift in Sources */,
 				637FC93E1D1F29BA00288B81 /* AppDelegate.swift in Sources */,
 			);
