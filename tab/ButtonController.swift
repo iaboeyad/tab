@@ -15,37 +15,40 @@ class ButtonController: UIViewController {
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var playerScoreLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var buttonLabel: UILabel!
     
     // MARK:  Unpacked game objects
     var endTime: Double?
     var ref: FIRDatabaseReference!
-
+    var captured = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        unpackGameData()
+        
         self.ref = FIRDatabase.database().reference()
-        //unpackGameData()
         _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
         //print(FIRServerValue.timestamp())
         
-        ref.child("gameChannel").observeEventType(.Value, withBlock: { snapshot in
-            if let numberOfPlayers = snapshot.value!.objectForKey("numberOfPlayers"){
-                self.numberOfPlayersLabel.text = String(numberOfPlayers)
-            }
-            
-            if let flagHolder = snapshot.value!.objectForKey("flagHolder"){
-                if flagHolder.isEqualToString("username") {
-                    //defend
-                } else {
-                    //capture
-                }
-            }
-            
-            if let endTime = snapshot.value!.objectForKey("endTime"){
-                self.endTime = endTime.doubleValue
-            }
-            
-        })
+//        ref.child("gameChannel").observeEventType(.Value, withBlock: { snapshot in
+//            if let numberOfPlayers = snapshot.value!.objectForKey("numberOfPlayers"){
+//                self.numberOfPlayersLabel.text = String(numberOfPlayers)
+//            }
+//            
+//            if let flagHolder = snapshot.value!.objectForKey("flagHolder"){
+//                if flagHolder.isEqualToString("username") {
+//                    //defend
+//                } else {
+//                    //capture
+//                }
+//            }
+//            
+//            if let endTime = snapshot.value!.objectForKey("endTime"){
+//                self.endTime = endTime.doubleValue
+//            }
+//            
+//        })
     }
     
     /* 
@@ -53,21 +56,14 @@ class ButtonController: UIViewController {
      from the firebase server and store its important variables
      as class variables in this controller
      */
-//    func unpackGameData() {
-//        endTime = NSDate().timeIntervalSince1970 + 10000
-//        print(NSDate().timeIntervalSince1970)
-//    }
+    func unpackGameData() {
+        endTime = NSDate().timeIntervalSince1970 + 10000
+        print(NSDate().timeIntervalSince1970)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func takeButtonPressed(sender: AnyObject) {
-        print("take button pressed")
-        //self.ref = FIRDatabase.database().reference()
-        let childUpdates = ["/gameChannel/flagHolder": "username"]
-        ref.updateChildValues(childUpdates)
     }
     
     func update() {
@@ -77,6 +73,24 @@ class ButtonController: UIViewController {
     
     func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
         return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    
+    @IBAction func buttonPressed(sender: UIButton) {
+        //self.ref = FIRDatabase.database().reference()
+        let childUpdates = ["/gameChannel/flagHolder": "username"]
+        ref.updateChildValues(childUpdates)
+        updateGraphics(sender)
+    }
+    
+    func updateGraphics(sender: UIButton) {
+        if(captured) {
+            buttonLabel.text = "DEFEND"
+            sender.setImage(UIImage(named: "shield"), forState: .Normal)
+        } else {
+            buttonLabel.text = "CAPTURE"
+            sender.setImage(UIImage(named: "sword_right"), forState: .Normal)
+        }
+        captured = !captured
     }
 }
 

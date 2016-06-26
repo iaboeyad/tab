@@ -36,6 +36,9 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
         
         // Connect data:
         populatePicker()
+        
+        // Update view:
+        toggleSelection()
     }
     
     //Calls this function when the tap is recognized.

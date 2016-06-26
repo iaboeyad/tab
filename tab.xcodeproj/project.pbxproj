@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06C73E021D1FD2350093CE07 /* Viking.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C73E011D1FD2350093CE07 /* Viking.ttf */; };
 		06C73E041D1FD23F0093CE07 /* sudden impact 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 06C73E031D1FD23F0093CE07 /* sudden impact 1.mp3 */; };
+		06C73E061D1FDDD00093CE07 /* unsheath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 06C73E051D1FDDD00093CE07 /* unsheath.mp3 */; };
 		06D92E221D1F40B400C251C8 /* JoinGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D92E211D1F40B400C251C8 /* JoinGameController.swift */; };
 		6299915A0C082A1921DE2DED /* Pods_tab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF9E02FC099A47EAC882DD3 /* Pods_tab.framework */; };
 		632DC61A1D1F635800FD118E /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 632DC6191D1F635800FD118E /* splashscreen.png */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		06C73E011D1FD2350093CE07 /* Viking.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Viking.ttf; sourceTree = "<group>"; };
 		06C73E031D1FD23F0093CE07 /* sudden impact 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sudden impact 1.mp3"; sourceTree = "<group>"; };
+		06C73E051D1FDDD00093CE07 /* unsheath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = unsheath.mp3; sourceTree = "<group>"; };
 		06D92E211D1F40B400C251C8 /* JoinGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGameController.swift; sourceTree = "<group>"; };
 		2CF9E02FC099A47EAC882DD3 /* Pods_tab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3287C4319F0F83659FB9ED65 /* Pods-tab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tab.release.xcconfig"; path = "Pods/Target Support Files/Pods-tab/Pods-tab.release.xcconfig"; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				06C73E011D1FD2350093CE07 /* Viking.ttf */,
 				06C73E031D1FD23F0093CE07 /* sudden impact 1.mp3 */,
+				06C73E051D1FDDD00093CE07 /* unsheath.mp3 */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			files = (
 				06C73E021D1FD2350093CE07 /* Viking.ttf in Resources */,
 				06C73E041D1FD23F0093CE07 /* sudden impact 1.mp3 in Resources */,
+				06C73E061D1FDDD00093CE07 /* unsheath.mp3 in Resources */,
 				637FC9481D1F29BA00288B81 /* LaunchScreen.storyboard in Resources */,
 				FA94E9221D1F65D300F2146C /* GoogleService-Info.plist in Resources */,
 				637FC9451D1F29BA00288B81 /* Assets.xcassets in Resources */,
