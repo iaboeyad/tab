@@ -51,4 +51,16 @@ class JoinGameController: UIViewController {
     @IBAction func startGamePressed(sender: AnyObject) {
         performSegueWithIdentifier("joinToNew", sender: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier != "joinToButton") { return }
+        //        let game: Game = Game(queryServerForGame(self.gameId.text!));
+        
+        //          pull the game from server by a unique string id?
+        //          somehow add you to the game?
+        
+        //        if(game == nil) { print("failed to connect to server") }
+        //        let destinationVC = segue.destinationViewController as! ButtonController
+        //        destinationVC = game
+    }
 }

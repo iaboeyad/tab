@@ -50,7 +50,7 @@ class NewGameController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             pickerData.append(i);
         }
     }
-
+    
     //MARK: - Delegates and data sources
     //MARK: Data Sources
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -76,21 +76,22 @@ class NewGameController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             alertController.addAction(okAction)
             presentViewController(alertController, animated: true, completion: nil)
         } else {
-        performSegueWithIdentifier("newToButton", sender: nil)
+            performSegueWithIdentifier("newToButton", sender: nil)
         }
     }
     @IBAction func joinGamePressed(sender: AnyObject) {
         performSegueWithIdentifier("newToJoin", sender: nil)
     }
-            //        let game: Game = Game(queryServerForGame(self.gameId.text!));
-            
-            //          pull the game from server by a unique string id?
-            //          somehow add you to the game?
-            
-            //        if(game == nil) { print("failed to connect to server") }
-            //print(segue.destinationViewController.title)
-            //let destinationVC = segue.destinationViewController as! ButtonController
-            //        destinationVC = game
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier != "newToButton") { return }
+        //        let game: Game = Game(queryServerForGame(self.gameId.text!));
+        
+        //          pull the game from server by a unique string id?
+        //          somehow add you to the game?
+        
+        //        if(game == nil) { print("failed to connect to server") }
+        //        let destinationVC = segue.destinationViewController as! ButtonController
+        //        destinationVC = game
+    }
 }
-
