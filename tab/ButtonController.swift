@@ -11,12 +11,13 @@ import Firebase
 import FirebaseDatabase
 import AVFoundation
 
-class ButtonController: UIViewController {
+class ButtonController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK:  Linked variables
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var playerScoreLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var buttonLabel: UILabel!
+    @IBOutlet weak var highScoreTable: UITableView!
     
     
     var score = 0;
@@ -30,6 +31,7 @@ class ButtonController: UIViewController {
     var captured = false
     let swordSlash =  NSBundle.mainBundle().URLForResource("unsheath", withExtension: "mp3")!
     var swordSlasher = AVAudioPlayer()
+    var highScores = [("Player Juan",27),("Player Too",20),("Player Tree",15),("Player fore",10),("Player 5ive",5),("Player sicks",4)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,42 @@ class ButtonController: UIViewController {
             swordSlasher = try AVAudioPlayer(contentsOfURL: swordSlash, fileTypeHint: nil)
             swordSlasher.prepareToPlay()
         } catch _ { }
+        
+        //table setup
+        highScoreTable.dataSource = self
+        highScoreTable.delegate = self
+    }
+    
+    // UITableViewDataSource Functions
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return highScores.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->   UITableViewCell {
+        let (name, score) = highScores[indexPath.row]
+        let cell = UITableViewCell()
+        let label1 = UILabel(frame: CGRect(x:0, y:0, width:CGRectGetWidth(tableView.bounds), height:50))
+        let label2 = UILabel(frame: CGRect(x:0, y:0, width:CGRectGetWidth(tableView.bounds), height:50))
+
+        label1.font =  UIFont(name: "Viking", size: 15)
+        label1.text = name
+        label1.backgroundColor = self.view.backgroundColor
+        label1.textAlignment = .Left
+        
+        label2.font = UIFont(name: "Viking", size: 12)
+        label2.text = String(score) + " POINTS OF VALOR"
+        label2.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0)
+        label2.textAlignment = .Right
+        
+        cell.addSubview(label1)
+        cell.addSubview(label2)
+        return cell
+    }
+    
+    // UITableViewDelegate Functions
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
     }
     
     /*
