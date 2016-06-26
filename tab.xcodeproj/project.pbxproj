@@ -17,6 +17,7 @@
 		637FC9431D1F29BA00288B81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637FC9411D1F29BA00288B81 /* Main.storyboard */; };
 		637FC9451D1F29BA00288B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 637FC9441D1F29BA00288B81 /* Assets.xcassets */; };
 		637FC9481D1F29BA00288B81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637FC9461D1F29BA00288B81 /* LaunchScreen.storyboard */; };
+		FA94E9221D1F65D300F2146C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA94E9211D1F65D300F2146C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		637FC9441D1F29BA00288B81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		637FC9471D1F29BA00288B81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		637FC9491D1F29BA00288B81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA94E9211D1F65D300F2146C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "tab/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		637FC9311D1F29BA00288B81 = {
 			isa = PBXGroup;
 			children = (
+				FA94E9211D1F65D300F2146C /* GoogleService-Info.plist */,
 				637FC93C1D1F29BA00288B81 /* tab */,
 				637FC93B1D1F29BA00288B81 /* Products */,
 				CC8E8502D25D2266DCA33445 /* Pods */,
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				637FC9481D1F29BA00288B81 /* LaunchScreen.storyboard in Resources */,
+				FA94E9221D1F65D300F2146C /* GoogleService-Info.plist in Resources */,
 				637FC9451D1F29BA00288B81 /* Assets.xcassets in Resources */,
 				637FC9431D1F29BA00288B81 /* Main.storyboard in Resources */,
 			);
