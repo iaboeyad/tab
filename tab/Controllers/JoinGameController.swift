@@ -25,6 +25,9 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
     var joinGameSelected = true
     var ref: FIRDatabaseReference!
     
+    var gameChannelName:String!
+    var currentPlayerName:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -136,24 +139,26 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
             alertController.addAction(okAction)
             presentViewController(alertController, animated: true, completion: nil)
         } else {
-            //            self.ref.child(self.gameId.text!).setValue(["endTime" : NSDate().timeIntervalSince1970+1000
-            //                ,"flagHolder" :"current user"
-            //                ,"gameName" : self.gameId.text!
-            //                ,"numberOfPlayers":1
-            //                ,"players":nil])
+            gameChannelName = self.gameId.text!
+            currentPlayerName = self.gameId.text!
+            
+            self.ref = FIRDatabase.database().reference()
+            self.ref.child(gameChannelName).setValue(["endTime" : NSDate().timeIntervalSince1970+1000
+                ,"flagHolder" :currentPlayerName
+                ,"gameName" : gameChannelName
+                ,"numberOfPlayers":1])
+            
+            self.ref.child("\(gameChannelName)/playerName").setValue(["name":currentPlayerName, "score":0])
+            
             performSegueWithIdentifier("playSegue", sender: nil)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier != "joinToButton") { return }
-        //        let game: Game = Game(queryServerForGame(self.gameId.text!));
+//        if (segue.identifier != "playSegue") { return }
         
-        //          pull the game from server by a unique string id?
-        //          somehow add you to the game?
-        
-        //        if(game == nil) { print("failed to connect to server") }
-        //        let destinationVC = segue.destinationViewController as! ButtonController
-        //        destinationVC = game
+        let destinationVC = segue.destinationViewController as! ButtonController
+        destinationVC.gameChannelName = self.gameChannelName
+        destinationVC.currentPlayerName = self.currentPlayerName
     }
 }

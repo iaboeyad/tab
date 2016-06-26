@@ -22,7 +22,9 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
     
     var score = 0;
     var scoreKeeper = NSTimer()
-    var flagCaptured = false;
+    var flagCaptured = false
+    var gameChannelName: String!
+    var currentPlayerName: String!
     
     var endTime: Double?
     var ref: FIRDatabaseReference!
@@ -87,20 +89,20 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
     func loadData() {
         // Firebase nonsense?
         self.ref = FIRDatabase.database().reference()
-        ref.child("gameChannel").observeEventType(.Value, withBlock: { snapshot in
-            if let numberOfPlayers = snapshot.value!.objectForKey("numberOfPlayers"){
+        ref.child(gameChannelName).observeEventType(.Value, withBlock: { snapshot in
+            if let numberOfPlayers = snapshot.value!.objectForKey("numberOfPlayers") {
                 self.numberOfPlayersLabel.text = String(numberOfPlayers)
             }
             
-            if let flagHolder = snapshot.value!.objectForKey("flagHolder"){
-                if flagHolder.isEqualToString("username") {
+            if let flagHolder = snapshot.value!.objectForKey("flagHolder") {
+                if flagHolder.isEqualToString(self.currentPlayerName) {
                     //defend
                 } else {
                     //capture
                 }
             }
             
-            if let endTime = snapshot.value!.objectForKey("endTime"){
+            if let endTime = snapshot.value!.objectForKey("endTime") {
                 self.endTime = endTime.doubleValue
             } else {
                 self.endTime = NSDate().timeIntervalSince1970 + 10000
@@ -128,7 +130,7 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
     @IBAction func buttonPressed(sender: UIButton) {
         updateGraphics(sender)
         //self.ref = FIRDatabase.database().reference()
-        let childUpdates = ["/gameChannel/flagHolder": "username"]
+        let childUpdates = ["/gameChannel/flagHolder": currentPlayerName]
         ref.updateChildValues(childUpdates)
         
         if !flagCaptured {
