@@ -7,6 +7,8 @@
 //
 
 import UIKit
+//import Firebase
+import FirebaseDatabase
 
 class ButtonController: UIViewController {
     // MARK:  Linked variables
@@ -16,13 +18,19 @@ class ButtonController: UIViewController {
     
     // MARK:  Unpacked game objects
     var endTime: Double?
-    
+    var ref: FIRDatabaseReference!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         unpackGameData()
         _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
+        
+        self.ref = FIRDatabase.database().reference()
+        ref.child("gameChannel").observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
+            self.numberOfPlayersLabel.text = snapshot.valueForKey("numberOfPlayers") as? String
+        })
     }
     
     /* 
@@ -41,6 +49,9 @@ class ButtonController: UIViewController {
     
     @IBAction func takeButtonPressed(sender: AnyObject) {
         print("take button pressed")
+        //self.ref = FIRDatabase.database().reference()
+        let childUpdates = ["/gameChannel/flagHolder": "update"]
+        ref.updateChildValues(childUpdates)
     }
     
     func update() {

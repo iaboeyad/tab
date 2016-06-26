@@ -7,4 +7,5 @@ target 'tab' do
 
   # Pods for tab
   pod 'Firebase'
+  pod 'Firebase/Database'
 end
