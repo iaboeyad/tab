@@ -27,6 +27,7 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     var gameChannelName:String!
     var currentPlayerName:String!
+    var isNewGame = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,11 +126,13 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
             startGameButton.titleLabel!.font =  UIFont(name: "Viking", size: 15)
             picker.hidden = true
             pickerLabel.hidden = true
+            isNewGame = false
         } else {
             joinGameButton.titleLabel!.font =  UIFont(name: "Viking", size: 15)
             startGameButton.titleLabel!.font =  UIFont(name: "Viking", size: 22)
             picker.hidden = false
             pickerLabel.hidden = false
+            isNewGame = true
         }
     }
     @IBAction func playPressed(sender: UIButton) {
@@ -139,17 +142,21 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
             alertController.addAction(okAction)
             presentViewController(alertController, animated: true, completion: nil)
         } else {
-            //if
             gameChannelName = self.gameId.text!
             currentPlayerName = self.playerId.text!
-            
             self.ref = FIRDatabase.database().reference()
-            self.ref.child(gameChannelName).setValue(["endTime" : NSDate().timeIntervalSince1970+1000
-                ,"flagHolder" :currentPlayerName
-                ,"gameName" : gameChannelName
-                ,"numberOfPlayers":1])
-            
-            self.ref.child("\(gameChannelName)/players/\(currentPlayerName)").setValue(["name":currentPlayerName, "score":0])
+            if isNewGame {
+                self.ref.child(gameChannelName).setValue(["endTime" : NSDate().timeIntervalSince1970+1000
+                    ,"flagHolder" :currentPlayerName
+                    ,"gameName" : gameChannelName
+                    ,"numberOfPlayers":1])
+                
+                self.ref.child("\(gameChannelName)/players/\(currentPlayerName)").setValue(["name":currentPlayerName, "score":0])
+
+            } else {
+                let childUpdates = ["/\(gameChannelName)/players/\(currentPlayerName)":["name":currentPlayerName, "score":0]]
+                ref.updateChildValues(childUpdates)
+            }
             
             performSegueWithIdentifier("playSegue", sender: nil)
         }
