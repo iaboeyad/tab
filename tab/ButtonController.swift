@@ -28,8 +28,20 @@ class ButtonController: UIViewController {
         _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
         
         self.ref = FIRDatabase.database().reference()
-        ref.child("gameChannel").observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
-            self.numberOfPlayersLabel.text = snapshot.valueForKey("numberOfPlayers") as? String
+        ref.child("gameChannel").observeEventType(.Value, withBlock: { snapshot in
+            if let numberOfPlayers = snapshot.value!.objectForKey("numberOfPlayers"){
+                self.numberOfPlayersLabel.text = String(numberOfPlayers)
+            }
+            
+            if let flagHolder = snapshot.value!.objectForKey("flagHolder"){
+                if flagHolder.isEqualToString("username") {
+                    //defend
+                } else {
+                    //capture
+                }
+            }
+            
+            
         })
     }
     
@@ -50,7 +62,7 @@ class ButtonController: UIViewController {
     @IBAction func takeButtonPressed(sender: AnyObject) {
         print("take button pressed")
         //self.ref = FIRDatabase.database().reference()
-        let childUpdates = ["/gameChannel/flagHolder": "update"]
+        let childUpdates = ["/gameChannel/flagHolder": "username"]
         ref.updateChildValues(childUpdates)
     }
     
