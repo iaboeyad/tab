@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,16 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="rVB-DV-p9K">
-                                <rect key="frame" x="114" y="0.0" width="372" height="653"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="rVB-DV-p9K">
+                                <rect key="frame" x="114" y="-804" width="372" height="2208"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="rVB-DV-p9K" secondAttribute="trailing" constant="94" id="0G3-5p-v2k"/>
-                            <constraint firstItem="rVB-DV-p9K" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="9lO-tc-Pio"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="rVB-DV-p9K" secondAttribute="bottom" constant="-53" id="XNq-h3-WGl"/>
-                            <constraint firstItem="rVB-DV-p9K" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="rej-OJ-Q0B"/>
+                            <constraint firstItem="rVB-DV-p9K" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QgC-T0-Z6f"/>
+                            <constraint firstItem="rVB-DV-p9K" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="lLx-AL-IvJ"/>
+                            <constraint firstItem="rVB-DV-p9K" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="31:50" id="nvv-8s-DC0"/>
                         </constraints>
                     </view>
                 </viewController>
