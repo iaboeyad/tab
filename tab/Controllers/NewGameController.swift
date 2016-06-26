@@ -50,7 +50,7 @@ class NewGameController: UIViewController, UIPickerViewDataSource, UIPickerViewD
             pickerData.append(i);
         }
     }
-
+    
     //MARK: - Delegates and data sources
     //MARK: Data Sources
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -68,10 +68,30 @@ class NewGameController: UIViewController, UIPickerViewDataSource, UIPickerViewD
         timeSelection = Int(pickerData[row])
     }
     
-    @IBAction func startPressed(sender: AnyObject) {
-        print("Time Selection:  \(self.timeSelection)")
-        print("Name Selection: \(self.playerId.text)")
-        print("Game Selection: \(self.gameId.text)")
+    @IBAction func newGamePressed(sender: AnyObject) {
+        if (self.gameId.text!.isEmpty || self.playerId.text!.isEmpty)
+        {
+            let alertController: UIAlertController = UIAlertController(title: "Woah There!", message: "Fill in some text!!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "Ok...", style: UIAlertActionStyle.Default, handler: nil)
+            alertController.addAction(okAction)
+            presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            performSegueWithIdentifier("newToButton", sender: nil)
+        }
+    }
+    @IBAction func joinGamePressed(sender: AnyObject) {
+        performSegueWithIdentifier("newToJoin", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier != "newToButton") { return }
+        //        let game: Game = Game(queryServerForGame(self.gameId.text!));
+        
+        //          pull the game from server by a unique string id?
+        //          somehow add you to the game?
+        
+        //        if(game == nil) { print("failed to connect to server") }
+        //        let destinationVC = segue.destinationViewController as! ButtonController
+        //        destinationVC = game
     }
 }
-

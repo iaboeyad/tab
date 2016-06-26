@@ -38,7 +38,29 @@ class JoinGameController: UIViewController {
     }
 
     @IBAction func joinGamePressed(sender: AnyObject) {
-        print("Name Selection: \(self.playerId.text)")
-        print("Game Selection: \(self.gameId.text)")
+        if (self.gameId.text!.isEmpty || self.playerId.text!.isEmpty)
+        {
+            let alertController: UIAlertController = UIAlertController(title: "Woah There!", message: "Fill in some text!!", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "Ok...", style: UIAlertActionStyle.Default, handler: nil)
+            alertController.addAction(okAction)
+            presentViewController(alertController, animated: true, completion: nil)
+        } else {
+        performSegueWithIdentifier("joinToButton", sender: nil)
+        }
+    }
+    @IBAction func startGamePressed(sender: AnyObject) {
+        performSegueWithIdentifier("joinToNew", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier != "joinToButton") { return }
+        //        let game: Game = Game(queryServerForGame(self.gameId.text!));
+        
+        //          pull the game from server by a unique string id?
+        //          somehow add you to the game?
+        
+        //        if(game == nil) { print("failed to connect to server") }
+        //        let destinationVC = segue.destinationViewController as! ButtonController
+        //        destinationVC = game
     }
 }
