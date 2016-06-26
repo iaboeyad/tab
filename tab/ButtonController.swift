@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import AVFoundation
 
 class ButtonController: UIViewController {
     // MARK:  Linked variables
@@ -17,16 +18,24 @@ class ButtonController: UIViewController {
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var buttonLabel: UILabel!
     
-    // MARK:  Unpacked game objects
     var endTime: Double?
     var ref: FIRDatabaseReference!
     var captured = true
+    let swordSlash =  NSBundle.mainBundle().URLForResource("unsheath", withExtension: "mp3")!
+    var swordSlasher = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         unpackGameData()
         
+        // Sound garbage
+        do {
+            swordSlasher = try AVAudioPlayer(contentsOfURL: swordSlash, fileTypeHint: nil)
+            swordSlasher.prepareToPlay()
+        } catch _ { }
+        
+        // Firebase nonsense
         self.ref = FIRDatabase.database().reference()
         _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
         //print(FIRServerValue.timestamp())
@@ -76,13 +85,14 @@ class ButtonController: UIViewController {
     }
     
     @IBAction func buttonPressed(sender: UIButton) {
+        updateGraphics(sender)
         //self.ref = FIRDatabase.database().reference()
         let childUpdates = ["/gameChannel/flagHolder": "username"]
         ref.updateChildValues(childUpdates)
-        updateGraphics(sender)
     }
     
     func updateGraphics(sender: UIButton) {
+        swordSlasher.play()
         if(captured) {
             buttonLabel.text = "DEFEND"
             sender.setImage(UIImage(named: "shield"), forState: .Normal)
