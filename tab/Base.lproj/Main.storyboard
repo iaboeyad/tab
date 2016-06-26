@@ -125,7 +125,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vGN-oa-1Jl" userLabel="Super Stack View">
-                                <rect key="frame" x="150" y="220" width="300" height="276"/>
+                                <rect key="frame" x="150" y="220" width="300" height="173"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYj-OO-vmP" userLabel="Key Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -172,17 +172,18 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Plt-bt-E7H" userLabel="Duration Stack View">
-                                        <rect key="frame" x="0.0" y="60" width="300" height="216"/>
+                                        <rect key="frame" x="0.0" y="60" width="300" height="113"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration (min.)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkI-Ud-SsS">
-                                                <rect key="frame" x="0.0" y="98" width="150" height="21"/>
+                                                <rect key="frame" x="0.0" y="46" width="150" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxP-Nu-Oty">
-                                                <rect key="frame" x="150" y="0.0" width="150" height="216"/>
+                                                <rect key="frame" x="150" y="0.0" width="150" height="113"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="113" id="Wpg-OK-IMW"/>
                                                     <constraint firstAttribute="width" constant="150" id="kWC-Vx-V8Y"/>
                                                 </constraints>
                                             </pickerView>
@@ -226,7 +227,7 @@
                                     <action selector="joinGamePressed:" destination="GbQ-4n-0tO" eventType="touchUpInside" id="UPN-z3-2jX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08L-aE-9zJ" userLabel="play">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08L-aE-9zJ" userLabel="play">
                                 <rect key="frame" x="200" y="0.0" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="37N-dm-DBN"/>
@@ -268,6 +269,8 @@
                         <outlet property="gameId" destination="mmY-XA-mzU" id="X0F-TP-FVm"/>
                         <outlet property="joinGameButton" destination="uRf-3f-b0r" id="QtK-5D-7cx"/>
                         <outlet property="picker" destination="qxP-Nu-Oty" id="2La-zc-v1v"/>
+                        <outlet property="pickerLabel" destination="vkI-Ud-SsS" id="tRW-Se-CaC"/>
+                        <outlet property="playButton" destination="08L-aE-9zJ" id="kwS-7Q-waM"/>
                         <outlet property="playerId" destination="Gyd-5C-kJV" id="4CO-ad-XkX"/>
                         <outlet property="startButton" destination="cCV-Fz-ieE" id="hxk-Rh-YVg"/>
                         <outlet property="startGameButton" destination="cCV-Fz-ieE" id="ajg-ed-yoS"/>
