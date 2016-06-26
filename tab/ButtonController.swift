@@ -18,6 +18,11 @@ class ButtonController: UIViewController {
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var buttonLabel: UILabel!
     
+    
+    var score = 0;
+    var scoreKeeper = NSTimer()
+    var flagCaptured = false;
+    
     var endTime: Double?
     var ref: FIRDatabaseReference!
     var captured = true
@@ -27,47 +32,45 @@ class ButtonController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        unpackGameData()
+        loadData()
         
         // Sound garbage
         do {
             swordSlasher = try AVAudioPlayer(contentsOfURL: swordSlash, fileTypeHint: nil)
             swordSlasher.prepareToPlay()
         } catch _ { }
-        
-        // Firebase nonsense
-        self.ref = FIRDatabase.database().reference()
-        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
-        //print(FIRServerValue.timestamp())
-        
-//        ref.child("gameChannel").observeEventType(.Value, withBlock: { snapshot in
-//            if let numberOfPlayers = snapshot.value!.objectForKey("numberOfPlayers"){
-//                self.numberOfPlayersLabel.text = String(numberOfPlayers)
-//            }
-//            
-//            if let flagHolder = snapshot.value!.objectForKey("flagHolder"){
-//                if flagHolder.isEqualToString("username") {
-//                    //defend
-//                } else {
-//                    //capture
-//                }
-//            }
-//            
-//            if let endTime = snapshot.value!.objectForKey("endTime"){
-//                self.endTime = endTime.doubleValue
-//            }
-//            
-//        })
     }
     
-    /* 
+    /*
      This function is intended to be used to unpack a game instance
      from the firebase server and store its important variables
      as class variables in this controller
      */
-    func unpackGameData() {
-        endTime = NSDate().timeIntervalSince1970 + 10000
-        print(NSDate().timeIntervalSince1970)
+    func loadData() {
+        // Firebase nonsense?
+        self.ref = FIRDatabase.database().reference()
+        ref.child("gameChannel").observeEventType(.Value, withBlock: { snapshot in
+            if let numberOfPlayers = snapshot.value!.objectForKey("numberOfPlayers"){
+                self.numberOfPlayersLabel.text = String(numberOfPlayers)
+            }
+            
+            if let flagHolder = snapshot.value!.objectForKey("flagHolder"){
+                if flagHolder.isEqualToString("username") {
+                    //defend
+                } else {
+                    //capture
+                }
+            }
+            
+            if let endTime = snapshot.value!.objectForKey("endTime"){
+                self.endTime = endTime.doubleValue
+            } else {
+                self.endTime = NSDate().timeIntervalSince1970 + 10000
+            }
+            
+            _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
+        })
+        // Firebase nonsense?
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,7 +92,13 @@ class ButtonController: UIViewController {
         //self.ref = FIRDatabase.database().reference()
         let childUpdates = ["/gameChannel/flagHolder": "username"]
         ref.updateChildValues(childUpdates)
+        
+        if !flagCaptured {
+            scoreKeeper = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.increaseScore), userInfo: nil, repeats: true)
+        }
     }
+    
+    func increaseScore(){ score+=1 }
     
     func updateGraphics(sender: UIButton) {
         swordSlasher.play()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -21,6 +22,7 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
     var pickerData: [Int] = [Int]()
     var timeSelection: Int = 1
     var joinGameSelected = true
+    var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +110,11 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
             alertController.addAction(okAction)
             presentViewController(alertController, animated: true, completion: nil)
         } else {
+//            self.ref.child(self.gameId.text!).setValue(["endTime" : NSDate().timeIntervalSince1970+1000
+//                ,"flagHolder" :"current user"
+//                ,"gameName" : self.gameId.text!
+//                ,"numberOfPlayers":1
+//                ,"players":nil])
             performSegueWithIdentifier("playSegue", sender: nil)
         }
     }
