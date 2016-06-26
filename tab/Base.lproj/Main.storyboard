@@ -155,6 +155,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Join Game"/>
                                         <connections>
+                                            <action selector="joinGamePressed:" destination="GbQ-4n-0tO" eventType="touchUpInside" id="vwW-hG-htB"/>
                                             <segue destination="BYZ-38-t0r" kind="show" id="4IA-ct-nO0"/>
                                         </connections>
                                     </button>
@@ -182,6 +183,10 @@
                             <constraint firstItem="f4l-rF-rLd" firstAttribute="top" secondItem="vGN-oa-1Jl" secondAttribute="bottom" constant="50" id="mZ7-Y7-hKN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gameId" destination="mmY-XA-mzU" id="CMd-sn-zfC"/>
+                        <outlet property="playerId" destination="Gyd-5C-kJV" id="eh4-n0-PuG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIZ-XF-q9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -312,6 +317,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lpY-IX-YPM"/>
+        <segue reference="4IA-ct-nO0"/>
     </inferredMetricsTieBreakers>
 </document>
