@@ -34,6 +34,8 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
     var swordSlasher = AVAudioPlayer()
     var highScores = [("Player Juan",27),("Player Too",20),("Player Tree",15),("Player fore",10),("Player 5ive",5),("Player sicks",4)]
     
+    var tempBool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -103,7 +105,12 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
                 } else {
                     //capture
                     self.captured = false
+                    print("false")
                     self.updateGraphics()
+                    //self.scoreKeeper.invalidate()
+                    
+//                    let childUpdates = ["/\(self.gameChannelName)/players/\(self.currentPlayerName)/score":self.score]
+//                    self.ref.updateChildValues(childUpdates)
                 }
             }
             
@@ -113,17 +120,23 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
                 self.endTime = NSDate().timeIntervalSince1970 + 10000
             }
             
+            
             if let players = snapshot.value!.objectForKey("players") {
                 self.numberOfPlayersLabel.text = String(players.count)
                 let player = players.objectForKey(self.currentPlayerName)
                 if let score = player!.valueForKey("score") {
-                    self.scoreLabel.text = String(score)
-                    self.score = Int(score as! NSNumber)
+                    if self.tempBool{
+                        self.scoreLabel.text = String(score)
+                        self.score = Int(score as! NSNumber)
+                        self.tempBool = !self.tempBool
+                    }
+                    
                 }
             }
             
             _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
         })
+        fireScoreCounter()
         // Firebase nonsense?
     }
     
@@ -146,15 +159,21 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
         let childUpdates = ["/\(gameChannelName)/flagHolder": currentPlayerName]
         ref.updateChildValues(childUpdates)
         
+        fireScoreCounter()
+    }
+    
+    func increaseScore(){
+        if captured {
+            score+=1
+            scoreLabel.text = String(score)
+        }
+    }
+    
+    func fireScoreCounter(){
         if !captured {
             scoreKeeper = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.increaseScore), userInfo: nil, repeats: true)
             captured = true
         }
-    }
-    
-    func increaseScore(){
-        score+=1
-        scoreLabel.text = String(score)
     }
     
     func updateGraphics() {
@@ -166,7 +185,6 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
             buttonLabel.text = "CAPTURE"
             captureButton.setImage(UIImage(named: "sword_right"), forState: .Normal)
         }
-        captured = !captured
     }
 }
 

@@ -139,6 +139,7 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
             alertController.addAction(okAction)
             presentViewController(alertController, animated: true, completion: nil)
         } else {
+            //if
             gameChannelName = self.gameId.text!
             currentPlayerName = self.playerId.text!
             
