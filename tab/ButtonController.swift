@@ -15,14 +15,15 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
     // MARK:  Linked variables
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet weak var playerScoreLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var buttonLabel: UILabel!
     @IBOutlet weak var highScoreTable: UITableView!
-    
+    @IBOutlet weak var captureButton: UIButton!
     
     var score = 0;
     var scoreKeeper = NSTimer()
-    @IBOutlet weak var captureButton: UIButton!
+    var numberOfPlayers = 0
     var gameChannelName: String!
     var currentPlayerName: String!
     
@@ -60,7 +61,7 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
         let cell = UITableViewCell()
         let label1 = UILabel(frame: CGRect(x:0, y:0, width:CGRectGetWidth(tableView.bounds), height:50))
         let label2 = UILabel(frame: CGRect(x:0, y:0, width:CGRectGetWidth(tableView.bounds), height:50))
-
+        
         label1.font =  UIFont(name: "Viking", size: 15)
         label1.text = name
         label1.backgroundColor = self.view.backgroundColor
@@ -99,12 +100,10 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
                     //defend
                     self.captured = true
                     self.updateGraphics()
-                    print(flagHolder)
                 } else {
                     //capture
                     self.captured = false
                     self.updateGraphics()
-                    print(flagHolder)
                 }
             }
             
@@ -114,11 +113,13 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
                 self.endTime = NSDate().timeIntervalSince1970 + 10000
             }
             
-            //if let playerScore = snapshot.value!.objectForKey("/\(self.currentPlayerName)/score") {
-            if let playerScore = snapshot.value!.objectForKey("players") {
-                //self.score = Int(playerScore as! NSNumber)
-                //print("xxxxxxxxxx \(playerScore)")
-                //self.playerScoreLabel.text = String(playerScore)
+            if let players = snapshot.value!.objectForKey("players") {
+                self.numberOfPlayersLabel.text = String(players.count)
+                let player = players.objectForKey(self.currentPlayerName)
+                if let score = player!.valueForKey("score") {
+                    self.scoreLabel.text = String(score)
+                    self.score = Int(score as! NSNumber)
+                }
             }
             
             _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
@@ -151,7 +152,10 @@ class ButtonController: UIViewController, UITableViewDataSource, UITableViewDele
         }
     }
     
-    func increaseScore(){ score+=1 }
+    func increaseScore(){
+        score+=1
+        scoreLabel.text = String(score)
+    }
     
     func updateGraphics() {
         swordSlasher.play()
