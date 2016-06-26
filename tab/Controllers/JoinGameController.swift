@@ -36,6 +36,7 @@ class JoinGameController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     @IBAction func joinGamePressed(sender: AnyObject) {
         print("Name Selection: \(self.playerId.text)")
         print("Game Selection: \(self.gameId.text)")
