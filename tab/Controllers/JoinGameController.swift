@@ -140,7 +140,7 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
             presentViewController(alertController, animated: true, completion: nil)
         } else {
             gameChannelName = self.gameId.text!
-            currentPlayerName = self.gameId.text!
+            currentPlayerName = self.playerId.text!
             
             self.ref = FIRDatabase.database().reference()
             self.ref.child(gameChannelName).setValue(["endTime" : NSDate().timeIntervalSince1970+1000
@@ -148,7 +148,7 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
                 ,"gameName" : gameChannelName
                 ,"numberOfPlayers":1])
             
-            self.ref.child("\(gameChannelName)/playerName").setValue(["name":currentPlayerName, "score":0])
+            self.ref.child("\(gameChannelName)/players/\(currentPlayerName)").setValue(["name":currentPlayerName, "score":0])
             
             performSegueWithIdentifier("playSegue", sender: nil)
         }

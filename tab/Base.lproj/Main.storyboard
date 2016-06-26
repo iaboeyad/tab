@@ -103,6 +103,7 @@
                     </view>
                     <connections>
                         <outlet property="buttonLabel" destination="5GO-To-QKZ" id="hF2-ME-ivy"/>
+                        <outlet property="captureButton" destination="pWh-kG-Wd9" id="3do-Ju-gNx"/>
                         <outlet property="countdownLabel" destination="0ap-bi-ZDn" id="cNH-hx-doL"/>
                         <outlet property="numberOfPlayersLabel" destination="VCb-qj-pjb" id="wRU-U7-IVC"/>
                         <outlet property="playerScoreLabel" destination="RXO-bl-Q2g" id="0no-X9-mnq"/>

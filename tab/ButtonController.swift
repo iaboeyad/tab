@@ -21,13 +21,13 @@ class ButtonController: UIViewController {
     
     var score = 0;
     var scoreKeeper = NSTimer()
-    var flagCaptured = false
+    @IBOutlet weak var captureButton: UIButton!
     var gameChannelName: String!
     var currentPlayerName: String!
     
     var endTime: Double?
     var ref: FIRDatabaseReference!
-    var captured = true
+    var captured = false
     let swordSlash =  NSBundle.mainBundle().URLForResource("unsheath", withExtension: "mp3")!
     var swordSlasher = AVAudioPlayer()
     
@@ -59,8 +59,14 @@ class ButtonController: UIViewController {
             if let flagHolder = snapshot.value!.objectForKey("flagHolder") {
                 if flagHolder.isEqualToString(self.currentPlayerName) {
                     //defend
+                    self.captured = true
+                    self.updateGraphics()
+                    print(flagHolder)
                 } else {
                     //capture
+                    self.captured = false
+                    self.updateGraphics()
+                    print(flagHolder)
                 }
             }
             
@@ -68,6 +74,13 @@ class ButtonController: UIViewController {
                 self.endTime = endTime.doubleValue
             } else {
                 self.endTime = NSDate().timeIntervalSince1970 + 10000
+            }
+            
+            //if let playerScore = snapshot.value!.objectForKey("/\(self.currentPlayerName)/score") {
+            if let playerScore = snapshot.value!.objectForKey("players") {
+                //self.score = Int(playerScore as! NSNumber)
+                //print("xxxxxxxxxx \(playerScore)")
+                //self.playerScoreLabel.text = String(playerScore)
             }
             
             _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
@@ -90,26 +103,26 @@ class ButtonController: UIViewController {
     }
     
     @IBAction func buttonPressed(sender: UIButton) {
-        updateGraphics(sender)
-        //self.ref = FIRDatabase.database().reference()
-        let childUpdates = ["/gameChannel/flagHolder": currentPlayerName]
+        updateGraphics()
+        let childUpdates = ["/\(gameChannelName)/flagHolder": currentPlayerName]
         ref.updateChildValues(childUpdates)
         
-        if !flagCaptured {
+        if !captured {
             scoreKeeper = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.increaseScore), userInfo: nil, repeats: true)
+            captured = true
         }
     }
     
     func increaseScore(){ score+=1 }
     
-    func updateGraphics(sender: UIButton) {
+    func updateGraphics() {
         swordSlasher.play()
         if(captured) {
             buttonLabel.text = "DEFEND"
-            sender.setImage(UIImage(named: "shield"), forState: .Normal)
+            captureButton.setImage(UIImage(named: "shield"), forState: .Normal)
         } else {
             buttonLabel.text = "CAPTURE"
-            sender.setImage(UIImage(named: "sword_right"), forState: .Normal)
+            captureButton.setImage(UIImage(named: "sword_right"), forState: .Normal)
         }
         captured = !captured
     }
