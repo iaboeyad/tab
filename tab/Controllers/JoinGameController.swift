@@ -145,8 +145,9 @@ class JoinGameController: UIViewController, UIPickerViewDataSource, UIPickerView
             gameChannelName = self.gameId.text!
             currentPlayerName = self.playerId.text!
             self.ref = FIRDatabase.database().reference()
+            let x = NSDate().timeIntervalSince1970+Double(timeSelection*60)
             if isNewGame {
-                self.ref.child(gameChannelName).setValue(["endTime" : NSDate().timeIntervalSince1970+1000
+                self.ref.child(gameChannelName).setValue(["endTime" : x
                     ,"flagHolder" :currentPlayerName
                     ,"gameName" : gameChannelName
                     ,"numberOfPlayers":1])

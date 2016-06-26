@@ -14,6 +14,12 @@
             <string>Viking-Medium</string>
             <string>Viking-Medium</string>
             <string>Viking-Medium</string>
+            <string>Viking-Medium</string>
+            <string>Viking-Medium</string>
+            <string>Viking-Medium</string>
+            <string>Viking-Medium</string>
+            <string>Viking-Medium</string>
+            <string>Viking-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -125,6 +131,38 @@
             </objects>
             <point key="canvasLocation" x="599" y="394"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="jyL-Lt-Ep1">
+            <objects>
+                <viewController id="ujD-V8-6HM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1nt-rA-pEw"/>
+                        <viewControllerLayoutGuide type="bottom" id="0wb-ro-jHN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="py2-qU-8TS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNj-OZ-TQx">
+                                <rect key="frame" x="235" y="355" width="131" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WINNER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tp5-bC-IW0">
+                                <rect key="frame" x="133" y="119" width="334" height="120"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="75"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0CB-Gw-Jym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="599" y="1151"/>
+        </scene>
         <!--Join Game-->
         <scene sceneID="C4h-i4-ADA">
             <objects>
@@ -143,7 +181,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYj-OO-vmP" userLabel="Key Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueJ-4K-NoW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueJ-4K-NoW">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -219,10 +257,10 @@
                                     <action selector="startGamePressed:" destination="GbQ-4n-0tO" eventType="touchUpInside" id="L37-Ko-Qzc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCV-Fz-ieE">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCV-Fz-ieE">
                                 <rect key="frame" x="439" y="549" width="141" height="31"/>
                                 <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="15"/>
-                                <state key="normal" title="Start Game">
+                                <state key="normal" title="Make Game">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -293,6 +331,114 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIZ-XF-q9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="599" y="-376"/>
+        </scene>
+        <!--Button Scene-->
+        <scene sceneID="UUr-J5-Sxf">
+            <objects>
+                <viewController id="ljA-kf-yzN" userLabel="Button Scene" customClass="ButtonController" customModule="tab" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jgj-zb-QyU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uzd-e6-RdW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nPV-ca-TiI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awP-bX-lcR">
+                                <rect key="frame" x="175" y="175" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="h3g-Aq-cLu"/>
+                                    <constraint firstAttribute="height" constant="250" id="lQc-nP-lt8"/>
+                                </constraints>
+                                <state key="normal" image="sword_right"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="ljA-kf-yzN" eventType="touchUpInside" id="5BF-e5-nii"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fN1-hZ-2Qj" userLabel="Number of Players Stack View">
+                                <rect key="frame" x="20" y="40" width="102" height="42"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1L-FQ-S1R">
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="21"/>
+                                        <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Players" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-yq-Tge">
+                                        <rect key="frame" x="0.0" y="21" width="102" height="21"/>
+                                        <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KXq-8K-z7J" userLabel="Score Stack View">
+                                <rect key="frame" x="479" y="40" width="101" height="42"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="INFINITY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0o-3h-hpI">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="21"/>
+                                        <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UP5-MY-9E9">
+                                        <rect key="frame" x="15" y="21" width="71" height="21"/>
+                                        <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-87-UuO">
+                                <rect key="frame" x="300" y="175" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAPTURE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6o-J4-qCw">
+                                <rect key="frame" x="203" y="425" width="195" height="37"/>
+                                <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JeJ-bj-saN">
+                                <rect key="frame" x="12" y="474" width="580" height="128"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="l6o-J4-qCw" firstAttribute="top" secondItem="awP-bX-lcR" secondAttribute="bottom" id="Aa6-6i-Q6w"/>
+                            <constraint firstItem="JeJ-bj-saN" firstAttribute="leading" secondItem="nPV-ca-TiI" secondAttribute="leading" constant="10" id="Ctc-X5-wUn"/>
+                            <constraint firstItem="awP-bX-lcR" firstAttribute="centerY" secondItem="nPV-ca-TiI" secondAttribute="centerY" id="Ikc-Lj-Dox"/>
+                            <constraint firstItem="KXq-8K-z7J" firstAttribute="top" secondItem="jgj-zb-QyU" secondAttribute="bottom" constant="20" id="JzQ-qH-OLM"/>
+                            <constraint firstItem="Uzd-e6-RdW" firstAttribute="top" secondItem="JeJ-bj-saN" secondAttribute="bottom" id="KAe-Wl-X8T"/>
+                            <constraint firstItem="awP-bX-lcR" firstAttribute="top" secondItem="XgI-87-UuO" secondAttribute="bottom" id="O90-fl-fg9"/>
+                            <constraint firstAttribute="trailing" secondItem="KXq-8K-z7J" secondAttribute="trailing" constant="20" id="RHh-4k-S6k"/>
+                            <constraint firstItem="JeJ-bj-saN" firstAttribute="top" secondItem="l6o-J4-qCw" secondAttribute="bottom" constant="10" id="Shs-qa-o8z"/>
+                            <constraint firstItem="awP-bX-lcR" firstAttribute="centerX" secondItem="nPV-ca-TiI" secondAttribute="centerX" id="TKX-mE-Eh1"/>
+                            <constraint firstItem="XgI-87-UuO" firstAttribute="centerX" secondItem="awP-bX-lcR" secondAttribute="centerX" id="ULG-DV-nZT"/>
+                            <constraint firstItem="l6o-J4-qCw" firstAttribute="centerX" secondItem="awP-bX-lcR" secondAttribute="centerX" id="UQm-bu-knw"/>
+                            <constraint firstAttribute="trailing" secondItem="JeJ-bj-saN" secondAttribute="trailing" constant="10" id="Utp-TW-dqc"/>
+                            <constraint firstItem="fN1-hZ-2Qj" firstAttribute="top" secondItem="jgj-zb-QyU" secondAttribute="bottom" constant="20" id="YV2-y0-Zpj"/>
+                            <constraint firstItem="fN1-hZ-2Qj" firstAttribute="leading" secondItem="nPV-ca-TiI" secondAttribute="leading" constant="20" id="ZKV-5U-xlv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonLabel" destination="l6o-J4-qCw" id="x3b-ou-Nfd"/>
+                        <outlet property="captureButton" destination="awP-bX-lcR" id="s2C-2I-qnd"/>
+                        <outlet property="countdownLabel" destination="XgI-87-UuO" id="Hsj-ON-y81"/>
+                        <outlet property="highScoreTable" destination="JeJ-bj-saN" id="Jnl-Xo-hFh"/>
+                        <outlet property="numberOfPlayersLabel" destination="k1L-FQ-S1R" id="IfT-WR-z7W"/>
+                        <outlet property="playerScoreLabel" destination="UP5-MY-9E9" id="YF0-vm-42M"/>
+                        <outlet property="scoreLabel" destination="g0o-3h-hpI" id="9j8-Y8-2LG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kz8-cq-Q8H" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="599" y="394"/>
         </scene>
     </scenes>
     <resources>

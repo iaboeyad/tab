@@ -18,6 +18,7 @@
 		637FC9431D1F29BA00288B81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637FC9411D1F29BA00288B81 /* Main.storyboard */; };
 		637FC9451D1F29BA00288B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 637FC9441D1F29BA00288B81 /* Assets.xcassets */; };
 		637FC9481D1F29BA00288B81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637FC9461D1F29BA00288B81 /* LaunchScreen.storyboard */; };
+		FA54FCBB1D2075FE00547E0D /* WinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FCBA1D2075FE00547E0D /* WinnerViewController.swift */; };
 		FA94E9221D1F65D300F2146C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA94E9211D1F65D300F2146C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		637FC9441D1F29BA00288B81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		637FC9471D1F29BA00288B81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		637FC9491D1F29BA00288B81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA54FCBA1D2075FE00547E0D /* WinnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinnerViewController.swift; sourceTree = "<group>"; };
 		FA94E9211D1F65D300F2146C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "tab/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 			children = (
 				637FC93F1D1F29BA00288B81 /* ButtonController.swift */,
 				06D92E211D1F40B400C251C8 /* JoinGameController.swift */,
+				FA54FCBA1D2075FE00547E0D /* WinnerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				06D92E221D1F40B400C251C8 /* JoinGameController.swift in Sources */,
 				637FC9401D1F29BA00288B81 /* ButtonController.swift in Sources */,
 				637FC93E1D1F29BA00288B81 /* AppDelegate.swift in Sources */,
+				FA54FCBB1D2075FE00547E0D /* WinnerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
