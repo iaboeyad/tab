@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
 import FirebaseDatabase
 
 class ButtonController: UIViewController {
@@ -23,11 +23,11 @@ class ButtonController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        unpackGameData()
-        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
-        
         self.ref = FIRDatabase.database().reference()
+        //unpackGameData()
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ButtonController.update), userInfo: nil, repeats: true)
+        //print(FIRServerValue.timestamp())
+        
         ref.child("gameChannel").observeEventType(.Value, withBlock: { snapshot in
             if let numberOfPlayers = snapshot.value!.objectForKey("numberOfPlayers"){
                 self.numberOfPlayersLabel.text = String(numberOfPlayers)
@@ -41,6 +41,9 @@ class ButtonController: UIViewController {
                 }
             }
             
+            if let endTime = snapshot.value!.objectForKey("endTime"){
+                self.endTime = endTime.doubleValue
+            }
             
         })
     }
@@ -50,9 +53,10 @@ class ButtonController: UIViewController {
      from the firebase server and store its important variables
      as class variables in this controller
      */
-    func unpackGameData() {
-        endTime = NSDate().timeIntervalSince1970 + 10000
-    }
+//    func unpackGameData() {
+//        endTime = NSDate().timeIntervalSince1970 + 10000
+//        print(NSDate().timeIntervalSince1970)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
