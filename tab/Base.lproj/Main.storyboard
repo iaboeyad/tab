@@ -57,8 +57,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bxb-dp-t7a" userLabel="Score Stack View">
-                                <rect key="frame" x="497" y="40" width="101" height="42"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bxb-dp-t7a" userLabel="Score Stack View">
+                                <rect key="frame" x="479" y="40" width="101" height="42"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INFINITY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1U-y3-RjP">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="21"/>
@@ -74,43 +74,54 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ap-bi-ZDn">
-                                <rect key="frame" x="504" y="506" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ap-bi-ZDn">
+                                <rect key="frame" x="300" y="175" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAPTURE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GO-To-QKZ">
                                 <rect key="frame" x="203" y="425" width="195" height="37"/>
                                 <fontDescription key="fontDescription" name="Viking-Medium" family="Viking" pointSize="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cAY-lW-vtZ">
+                                <rect key="frame" x="12" y="474" width="580" height="128"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="0ap-bi-ZDn" secondAttribute="bottom" constant="20" id="3hQ-oJ-oUj"/>
                             <constraint firstItem="5GO-To-QKZ" firstAttribute="top" secondItem="pWh-kG-Wd9" secondAttribute="bottom" id="ANG-mU-6lB"/>
-                            <constraint firstAttribute="trailing" secondItem="0ap-bi-ZDn" secondAttribute="trailing" constant="20" id="MAq-57-Ghg"/>
                             <constraint firstItem="pWh-kG-Wd9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O0G-K7-5sO"/>
+                            <constraint firstItem="cAY-lW-vtZ" firstAttribute="top" secondItem="5GO-To-QKZ" secondAttribute="bottom" constant="10" id="VQd-50-wEE"/>
                             <constraint firstItem="fwq-Wo-6vJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="WEp-Jq-loC"/>
                             <constraint firstItem="pWh-kG-Wd9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YTu-jE-HiU"/>
+                            <constraint firstItem="pWh-kG-Wd9" firstAttribute="top" secondItem="0ap-bi-ZDn" secondAttribute="bottom" id="bkA-QE-QHV"/>
+                            <constraint firstItem="cAY-lW-vtZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="dFH-kS-McL"/>
                             <constraint firstItem="5GO-To-QKZ" firstAttribute="centerX" secondItem="pWh-kG-Wd9" secondAttribute="centerX" id="eOZ-5N-MgQ"/>
                             <constraint firstItem="fwq-Wo-6vJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hea-0X-Q6K"/>
+                            <constraint firstAttribute="trailing" secondItem="cAY-lW-vtZ" secondAttribute="trailing" constant="10" id="iaT-jR-i2v"/>
                             <constraint firstItem="Bxb-dp-t7a" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="m3y-Sh-TFB"/>
                             <constraint firstAttribute="trailing" secondItem="Bxb-dp-t7a" secondAttribute="trailing" constant="20" id="pFF-WG-EQb"/>
+                            <constraint firstItem="0ap-bi-ZDn" firstAttribute="centerX" secondItem="pWh-kG-Wd9" secondAttribute="centerX" id="vfU-cb-N68"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cAY-lW-vtZ" secondAttribute="bottom" id="wlu-gI-OOl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="buttonLabel" destination="5GO-To-QKZ" id="hF2-ME-ivy"/>
                         <outlet property="countdownLabel" destination="0ap-bi-ZDn" id="cNH-hx-doL"/>
+                        <outlet property="highScoreTable" destination="cAY-lW-vtZ" id="atp-Xb-Bo8"/>
                         <outlet property="numberOfPlayersLabel" destination="VCb-qj-pjb" id="wRU-U7-IVC"/>
                         <outlet property="playerScoreLabel" destination="RXO-bl-Q2g" id="0no-X9-mnq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="357"/>
+            <point key="canvasLocation" x="599" y="394"/>
         </scene>
         <!--Join Game-->
         <scene sceneID="C4h-i4-ADA">
@@ -279,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIZ-XF-q9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="-436"/>
+            <point key="canvasLocation" x="599" y="-376"/>
         </scene>
     </scenes>
     <resources>
